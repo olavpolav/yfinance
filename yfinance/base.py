@@ -261,7 +261,11 @@ class TickerBase():
                 df[col] = _np.where(
                     df[col].astype(str) == '-', _np.nan, df[col])
 
-            df.set_index('endDate', inplace=True)
+            #df.set_index('endDate', inplace=True)
+            try:
+                df.set_index('endDate', inplace=True)
+            except:
+                pass
             try:
                 df.index = _pd.to_datetime(df.index, unit='s')
             except ValueError:
